@@ -9,7 +9,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>HTML5|Uploader</title>
+    <title>DOCX Converter</title>
     <meta name="description" content="Resumable uploads with only Javascript and PHP. HTML5|Uploader.">
     <meta name="keywords" content="file upload, resumable, uploader, modern file upload, HMTL5">
     <meta property="og:description" content="Resumable upload script with MySQL backend.">
@@ -27,7 +27,7 @@
         <nav id="menu" class="menu">
             <ul id="tiny">
                 <li class="active"><a href="//www.filson.com">Home</a></li>
-                <li><a href="//github.com/ehime/DOCX-Uploader">View</a></li>
+                <li><a href="//github.com/ehime/DOCX-Converter">View</a></li>
             </ul>
         </nav>
         <!-- End Menu -->
