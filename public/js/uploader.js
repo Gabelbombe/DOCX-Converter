@@ -20,7 +20,6 @@
         define([
             'jquery',
             'tmpl',
-//            './jquery.fileupload-resize',
             './jquery.fileupload-validate'
         ], factory);
     } else {
@@ -121,7 +120,7 @@
 
                         data.context
                             .find('.progress-wrap')
-                            .append('<img src="/assets/img/progress-static.gif" class="progress-static">')
+                            .append('<img src="/img/progress-static.gif" class="progress-static">')
                             .css('height','7px');
                     }
                 }

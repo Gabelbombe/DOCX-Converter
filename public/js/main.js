@@ -3,8 +3,11 @@ $(function () {
 
     //set up our file upload script
     $("#fileupload").uploader({
+        acceptFileTypes: /(\.|\/)(doc|docx)$/i,
         url: 'handler.php',
         maxFileSize: 1024*1024*20 // 20MB
+    }).bind('fileuploadadded', function (e, data) {
+        console.log(data.files.valid);
     });
 
     // Load information about the already uploaded files (We don't use this, but maybe you will need. Check the console.)

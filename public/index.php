@@ -39,7 +39,7 @@
         <div id="dropzone" class="dropzone">
             <h1>Drop Zone</h1>
             <p>
-                Drop your files here. This is only a demo, your files will be deleted after an hour.<br>
+                Drop your files here. For security, your files will be deleted after an hour.<br>
                 Max allowed file size is 20MB.
             </p>
                     <span id="browsebutton" class="fileinput-button button gray" href="">

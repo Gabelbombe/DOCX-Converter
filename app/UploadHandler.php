@@ -593,7 +593,7 @@ Class UploadHandler
                         FILE_APPEND
                     );
                 } else {
-                    moveUploadedFile($uploaded_file, $file_path);
+                    move_uploaded_file($uploaded_file, $file_path);
                 }
             } else {
                 // Non-multipart uploads (PUT method support)

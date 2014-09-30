@@ -1,7 +1,6 @@
 <?php
 require('UploadHandler.php');
 
-
 Class UploadHandlerMYSQL Extends UploadHandler
 {
     protected function initialize()
@@ -172,9 +171,9 @@ Class UploadHandlerMYSQL Extends UploadHandler
         return $answer;
     }
 
-    protected function handleFileUpload($uploaded_file, $name, $size, $type, $error,
-            $index = null, $content_range = null) {
-        $file = new stdClass();
+    protected function handleFileUpload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null)
+    {
+        $file = New stdClass();
         $file->name = $this->getFileName($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
@@ -212,7 +211,7 @@ Class UploadHandlerMYSQL Extends UploadHandler
                         FILE_APPEND
                     );
                 } else {
-                    moveUploadedFile($uploaded_file, $file_path);
+                    move_uploaded_file($uploaded_file, $file_path);
                 }
             } else {
                 // Non-multipart uploads (PUT method support)
@@ -245,4 +244,3 @@ Class UploadHandlerMYSQL Extends UploadHandler
         return $file;
     }
 }
-?>
