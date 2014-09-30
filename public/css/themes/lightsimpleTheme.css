@@ -5,14 +5,14 @@
 
 /*fontello base icons*/
 @font-face {
-    font-family: 'fontello';
-    src: url('fonts/fontello.eot?78972571');
-    src: url('fonts/fontello.eot?78972571#iefix') format('embedded-opentype'),
-    url('fonts/fontello.woff?78972571') format('woff'),
-    url('fonts/fontello.ttf?78972571') format('truetype'),
-    url('fonts/fontello.svg?78972571#fontello') format('svg');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'fontello';
+  src: url('fonts/font/fontello.eot?78972571');
+  src: url('fonts/font/fontello.eot?78972571#iefix') format('embedded-opentype'),
+       url('fonts/font/fontello.woff?78972571') format('woff'),
+       url('fonts/font/fontello.ttf?78972571') format('truetype'),
+       url('fonts/font/fontello.svg?78972571#fontello') format('svg');
+  font-weight: normal;
+  font-style: normal;
 }
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
@@ -24,38 +24,38 @@
   }
 }
 */
-
-[class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "fontello";
-    font-style: normal;
-    font-weight: normal;
-    speak: none;
-
-    display: inline-block;
-    text-decoration: inherit;
-    width: 1em;
-    margin-right: .2em;
-    text-align: center;
-    /* opacity: .8; */
-
-    /* For safety - reset parent styles, that can break glyph codes*/
-    font-variant: normal;
-    text-transform: none;
-
-    /* fix buttons height, for twitter bootstrap */
-    line-height: 1em;
-
-    /* Animation center compensation - margins should be symmetric */
-    /* remove if not needed */
-    margin-left: .2em;
-
-    /* you can be more comfortable with increased icons size */
-    /* font-size: 120%; */
-
-    /* Uncomment for 3D effect */
-    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+     
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+ 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
+ 
 .icon-ok:before { content: '\e804'; } /* '' */
 .icon-check:before { content: '\e805'; } /* '' */
 .icon-download-outline:before { content: '\e80a'; } /* '' */
@@ -74,7 +74,7 @@
 /* ==========================================================================
    General
    ========================================================================== */
-.DOCXConverter {
+.uploader {
     font-family: 'Lato', sans-serif;
     color: #2C3E50;
     font-size: 14px;
@@ -84,37 +84,37 @@
     word-spacing: 0px;
 }
 
-.DOCXConverter .upload-wrapper {
-    width: 500px;
-    margin: 100px auto;
+.uploader .upload-wrapper {
+   width: 500px;
+   margin: 100px auto;
 }
 
 /* ==========================================================================
    Dropzone
    ========================================================================== */
 
-.DOCXConverter .drop-wrapper {
+.uploader .drop-wrapper {
     width: 74%;
     min-width: 500px;
     max-width: 1000px;
     margin: 100px auto;
 }
 
-.DOCXConverter .dropzone {
+.uploader .dropzone {
     padding: 30px 50px 100px 50px;
     margin-bottom: 50px;
     border: 5px dashed #d6d6d6;
     text-align: center;
 }
 
-.DOCXConverter .dropzone h1 {
+.uploader .dropzone h1 {
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
     color: #858585;
 }
 
-.DOCXConverter .dropzone button {
+.uploader .dropzone button {
     text-transform: none;
     font-weight: normal;
     font-size: 14px;
@@ -122,29 +122,27 @@
 }
 
 /* ==========================================================================
-   Speed/time Info
+   Speed/time Info 
    ========================================================================== */
-.DOCXConverter .info-wrapper {
+.uploader .info-wrapper {
     display: none;
     margin-bottom: 20px;
 }
 
-.DOCXConverter .speed-info {
-    margin-top: 2px;
-    float: right;
-    border-radius: 5px;
-    background-color: #f3f3f5;
-    border: 1px solid #e2e2e9;
+.uploader .speed-info {
+    margin-top: 2px; 
+    float: right; 
+    border-radius: 5px; 
+    background-color: #eeeeee;
     padding: 4px 11px;
 }
 
-.DOCXConverter .time-info {
+.uploader .time-info {
     margin-top: 2px;
     margin-left: 18px;
-    float: right;
-    border-radius: 5px;
-    background-color: #f3f3f5;
-    border: 1px solid #e2e2e9;
+    float: right; 
+    border-radius: 5px; 
+    background-color: #eeeeee;
     padding: 4px 11px;
 }
 
@@ -152,51 +150,50 @@
 /* ==========================================================================
    Files | aka preview
    ========================================================================== */
-.DOCXConverter .files {
+.uploader .files {
     list-style: none;
     padding: 0;
-}
+} 
 
-.DOCXConverter .files li {
+.uploader .files li {
     margin-bottom: 30px;
     padding: 13px 15px 30px 20px;
-    background-color: #f3f3f5;
-    border: 1px solid #e2e2e9;
+    background-color: #eeeeee;
     border-radius: 5px;
     position: relative;
 }
 
-.DOCXConverter .files .first {
+.uploader .files .first {
     margin-bottom: 1.15em;
 }
 
-.DOCXConverter .files .first .top {
+.uploader .files .first .top {
     color: #000;
 }
 
-.DOCXConverter .files .first .icon-download {
+.uploader .files .first .icon-download {
     color: #5C5C5C;
 }
 
-.DOCXConverter .files .first .download-link {
+.uploader .files .first .download-link {
     display: none;
 }
 
-.DOCXConverter .files .first .pause {
+.uploader .files .first .pause {
     float: right;
     font-size: 1.3em;
     cursor: pointer;
     display:  none;
 }
 
-.DOCXConverter .files .first .error {
+.uploader .files .first .error {
     color: #b80000;
     margin-top: 0.4em;
     font-family: 'Trebuchet MS';
     font-weight: bold;
 }
 
-.DOCXConverter .files .first .cancel-single {
+.uploader .files .first .cancel-single {
     float: right;
     font-size: 1.3em;
     margin-left: 13px;
@@ -204,11 +201,11 @@
     opacity: 0.3;
 }
 
-.DOCXConverter .files .first .cancel-single:hover {
+.uploader .files .first .cancel-single:hover {
     opacity: 0.8;
 }
 
-.DOCXConverter .files .second .filesize {
+.uploader .files .second .filesize {
     display: block;
     float: left;
     line-height: 6px;
@@ -217,25 +214,24 @@
     color: #838383;
 }
 
-.DOCXConverter .files .second .progress-wrap {
+.uploader .files .second .progress-wrap {
     float: left;
 }
 
-.DOCXConverter .success-tick {
+.uploader .success-tick {
     position: absolute;
     display: none;
-    font-size: 2.1em;
+    font-size: 2.1em; 
     color: #26A04D;
     top: 33px;
     right: 23px;
 }
 
-.DOCXConverter .add-more {
+.uploader .add-more {
     width: 20px;
     height: 25px;
     padding: 5px 10px;
-    background-color: #eaeaea;
-    border: 1px solid #d8d8de;
+    background-color: #eeeeee;
     cursor: pointer;
     border-radius: 3px;
     opacity: 0.6;
@@ -245,14 +241,14 @@
     margin: 0 auto;
 
     -webkit-transition: all .17s ease;
-    -moz-transition: all .17s ease;
-    -ms-transition: all .17s ease;
-    -o-transition: all .17s ease;
-    transition: all .17s ease;
-
+       -moz-transition: all .17s ease;
+        -ms-transition: all .17s ease;
+         -o-transition: all .17s ease;
+            transition: all .17s ease;
+    
 }
 
-.DOCXConverter .add-more:hover {
+.uploader .add-more:hover {
     width: 135px;
     color: #1f2b38;
 
@@ -261,7 +257,7 @@
 /* ==========================================================================
    Buttons
    ========================================================================== */
-.DOCXConverter button, .DOCXConverter .button {
+.uploader button, .uploader .button {
     padding: 10px 22px;
     color: #FFF;
     text-decoration: none;
@@ -274,70 +270,70 @@
     font-family: 'Lato', sans-serif;
 
     -webkit-transition: all .10s ease;
-    -moz-transition: all .10s ease;
-    -ms-transition: all .10s ease;
-    -o-transition: all .10s ease;
-    transition: all .10s ease;
+       -moz-transition: all .10s ease;
+        -ms-transition: all .10s ease;
+         -o-transition: all .10s ease;
+            transition: all .10s ease;
 }
 
-.DOCXConverter button:hover, .DOCXConverter .button:hover {
-    background-color: #F77872;
+.uploader button:hover, .uploader .button:hover {
+    background-color: #F77872; /*#6B6868*/
 }
 
-.DOCXConverter .gray {
+.uploader .gray {
     background-color: #6B6868;
 }
 
-.DOCXConverter .gray:hover {
-    background-color: #7B7878;
+.uploader .gray:hover {
+ background-color: #7B7878;   
 }
 
-.DOCXConverter .pinkish {
+.uploader .pinkish {
     background-color: #FF6760;
 }
 
-.DOCXConverter .pinkish:hover {
+.uploader .pinkish:hover {
     background-color: #F77872;
 }
 
 /* ==========================================================================
    Progressbar
    ========================================================================== */
-.DOCXConverter .progress-wrap {
+.uploader .progress-wrap {
     width: 300px;
 }
 
-.DOCXConverter .progress {
+.uploader .progress {
     height: 7px;
     background-color: #dedede;
     border-radius: 32px;
     overflow: hidden;
 }
 
-.DOCXConverter .bar {
+.uploader .bar {
     background-color: #616161;
     float: left;
     height: 100%;
 
     -webkit-transition: width .6s ease;
-    -moz-transition: width .6s ease;
-    -ms-transition: width .6s ease;
-    -o-transition: width .6s ease;
-    transition: width .6s ease;
+       -moz-transition: width .6s ease;
+        -ms-transition: width .6s ease;
+         -o-transition: width .6s ease;
+            transition: width .6s ease;
 }
 
-.DOCXConverter .progress-static {
+.uploader .progress-static {
     vertical-align: top;
 }
 /* ==========================================================================
 file input, we hide this file input, really hacky, but IE not working with programmable fileinput onclick invocation..
    ========================================================================== */
-.DOCXConverter .fileinput-button {
+.uploader .fileinput-button {
     position: relative;
     overflow: hidden;
 }
 
-.DOCXConverter .fileinput-button input {
+.uploader .fileinput-button input {
     position: absolute;
     top: 0;
     right: 0;
@@ -348,25 +344,39 @@ file input, we hide this file input, really hacky, but IE not working with progr
     cursor: pointer;
 }
 
-.DOCXConverter .add-more-button {
+.uploader .add-more-button {
 
+}
+
+/* ==========================================================================
+   footer
+   ========================================================================== */
+footer {
+    color: #e7e7e7;
+    background-color: #3D3C3C;
+    text-align: center;
+    font-size: 13px;
+}
+
+footer .inner {
+    padding: 30px 0;
 }
 
 
 
 
 /* ==========================================================================
-   Helper Classes (DOCXConverter)
+   Helper Classes (uploader)
    ========================================================================== */
-.DOCXConverter .hidden {
-    display: none !important;
-    visibility: hidden;
+.uploader .hidden {
+   display: none !important;
+   visibility: hidden;
 }
 
-.DOCXConverter .clear {
+.uploader .clear {
     clear:both;
 }
 
-.DOCXConverter .relative {
+.uploader .relative {
     position: relative;
 }

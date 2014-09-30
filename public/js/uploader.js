@@ -1,30 +1,36 @@
+/*
+ * uploader
+ * https://github.com/filad/uploader
+ *
+ * Copyright 2014, Adam ehime
+ * http://ehime.org
+ *
+ * Licensed under the MIT license:
+ * http://www.opensource.org/licenses/MIT
+ */
+
 /*jslint nomen: true, regexp: true */
 /*global define, window, URL, webkitURL, FileReader */
 
-(function (factory)
-{
+
+(function (factory) {
     'use strict';
-    if (typeof define === 'function' && define.amd)
-    {
+    if (typeof define === 'function' && define.amd) {
         // Register as an anonymous AMD module:
         define([
             'jquery',
             'tmpl',
-            './jquery.fileupload-resize',
+//            './jquery.fileupload-resize',
             './jquery.fileupload-validate'
         ], factory);
-    }
-
-    else
-    {
+    } else {
         // Browser globals:
         factory(
             window.jQuery,
             window.Handlebars
         );
     }
-} (function ($, Handlebars)
-{
+}(function ($, Handlebars) {
     'use strict';
 
     $.blueimp.fileupload.prototype._specialOptions.push(
@@ -35,10 +41,9 @@
 
     // The UI version extends the file upload widget
     // and adds complete user interface interaction:
-    $.widget('ehime.DOCXConverter', $.blueimp.fileupload,
-    {
-        options:
-        {
+    $.widget('ehime.uploader', $.blueimp.fileupload, {
+
+        options: {
             // By default, files added to the widget are uploaded as soon
             // as the user clicks on the start buttons. To enable automatic
             // uploads, set the following option to true:
@@ -58,27 +63,24 @@
 
             // Function returning the current number of files,
             // used by the maxNumberOfFiles validation:
-            getNumberOfFiles: function ()
-            {
+            getNumberOfFiles: function () {
                 return this.filesContainer.children().length;
             },
 
             // The add callback is invoked as soon as files are added to the fileupload
             // widget (via file input selection, drag & drop or add API call).
-            add: function (e, data)
-            {
+            add: function (e, data) {
+
                 var $this = $(this),
-                    that = $this.data('ehime-DOCXConverter'),
+                    that = $this.data('ehime-uploader'),
                     options = that.options,
                     files = data.files,
                     addmore = $("#add-more-button"),
                     existingFiles = options.existingFiles || [];
 
-                data.process(function ()
-                {
-                    return $this.DOCXConverter('process', data);
-                }).always(function ()
-                {
+                data.process(function () {
+                    return $this.uploader('process', data);
+                }).always(function () {
                     $("#info-wrapper").fadeIn('fast');
                     addmore.removeClass('hidden');
 
@@ -90,10 +92,9 @@
                     that._forceReflow(data.context);
                     that._transition(data.context).done(
                         function () {
-                            if ((that._trigger('added', e, data) !== false)
-                            && (options.autoUpload || data.autoUpload)
-                            && data.autoUpload !== false && !data.files.error)
-                            {
+                            if ((that._trigger('added', e, data) !== false) &&
+                                (options.autoUpload || data.autoUpload) &&
+                                data.autoUpload !== false && !data.files.error) {
                                 data.submit();
                             }
                         }
@@ -102,20 +103,17 @@
             },
 
             // Callback for the start of each file upload request:
-            send: function (e, data)
-            {
-                var that = $(this).data('ehime-DOCXConverter');
+            send: function (e, data) {
+                var that = $(this).data('ehime-uploader');
                 data.context.find('.resumed-upload-note').fadeOut();
 
-                if (data.context && data.dataType
-                && data.dataType.substr(0, 6) === 'iframe')
-                {
+                if (data.context && data.dataType &&
+                    data.dataType.substr(0, 6) === 'iframe') {
                     // Iframe Transport does not support progress events.
                     // In lack of an indeterminate progress bar, we 
                     // showing the full animated bar:
                     // Bit hacky.
-                    if (! $.support.transition)
-                    {
+                    if (!$.support.transition) {
                         data.context
                             .find('.progress').hide()
                             .find('.bar')
@@ -132,7 +130,7 @@
 
             // Callback for successful uploads:
             done: function (e, data) {
-                var that = $(this).data('ehime-DOCXConverter'),
+                var that = $(this).data('ehime-uploader'),
                     getFilesFromResponse = data.getFilesFromResponse ||
                         that.options.getFilesFromResponse,
                     files = getFilesFromResponse(data),
@@ -188,11 +186,11 @@
                     bitrateInfo = $this.find('.speed-info');
 
                 timeInfo.find('span').html(
-                    $this.data('ehime-DOCXConverter')._renderTimeInfo(data)
+                    $this.data('ehime-uploader')._renderTimeInfo(data)
                 );
 
                 bitrateInfo.html(
-                    $this.data('ehime-DOCXConverter')._renderBitrateInfo(data)
+                    $this.data('ehime-uploader')._renderBitrateInfo(data)
                 );
             },
 

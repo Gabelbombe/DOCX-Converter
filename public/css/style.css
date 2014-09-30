@@ -102,8 +102,8 @@ textarea {
    General
    ========================================================================== */
 body {
-    font-family: 'Lato', sans-serif;
-    color: #2C3E50;
+	font-family: 'Lato', sans-serif;
+	color: #2C3E50;
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
@@ -130,7 +130,7 @@ a {
    header
    ========================================================================== */
 header {
-    background-color: #3D3C3C; /*#262626*/
+    background-color: #3D3C3C; /*#262626*/ 
 }
 
 header .logo {
@@ -166,11 +166,11 @@ header .menu {
     color: #CFCFCF;
 
     -webkit-transition: all .20s ease-in;
-    -moz-transition: all .20s ease-in;
-    -ms-transition: all .20s ease-in;
-    -o-transition: all .20s ease-in;
-    transition: all .20s ease-in;
-
+       -moz-transition: all .20s ease-in;
+        -ms-transition: all .20s ease-in;
+         -o-transition: all .20s ease-in;
+            transition: all .20s ease-in;
+    
 }
 
 .menu ul li a:hover {
@@ -183,32 +183,32 @@ header .menu {
     /*width: 100%;*/
     padding: 65px 0 90px 0;
     color: #F0F0F0;
-
+    
 }
 
 .banner-container div {
     margin: 0 auto;
     width: 950px;
-
+    
 }
 
 .banner-container .banner-text {
-    float: left;
-    width: 590px;
-    padding-top:  30px;
-    word-spacing: 2px;
+   float: left;
+   width: 590px;
+   padding-top:  30px;
+   word-spacing: 2px;
 }
 
 .banner-container .banner-text h1 {
-    font-size: 38px;
-    font-weight: 300;
-    margin-top: 10px;
+   font-size: 38px;
+   font-weight: 300;
+   margin-top: 10px;
 }
 
 .banner-container .banner-text h2 {
-    font-size: 22px;
-    margin-top: 20px;
-    font-weight: 300;
+   font-size: 22px;
+   margin-top: 20px;
+   font-weight: 300;
 }
 
 .banner-container img {
@@ -235,10 +235,10 @@ button, .button {
     font-family: 'Lato', sans-serif;
 
     -webkit-transition: all .10s ease;
-    -moz-transition: all .10s ease;
-    -ms-transition: all .10s ease;
-    -o-transition: all .10s ease;
-    transition: all .10s ease;
+       -moz-transition: all .10s ease;
+        -ms-transition: all .10s ease;
+         -o-transition: all .10s ease;
+            transition: all .10s ease;
 }
 
 button:hover, .button:hover{
@@ -250,7 +250,7 @@ button:hover, .button:hover{
 }
 
 .gray:hover {
-    background-color: #7B7878;
+ background-color: #7B7878;   
 }
 
 .pinkish {
@@ -268,7 +268,7 @@ button:hover, .button:hover{
 .pink-to-white:hover {
     background-color: #f6f6f6;
     color: #2A2A2A;
-}
+} 
 
 
 /* ==========================================================================
@@ -292,7 +292,7 @@ button:hover, .button:hover{
 
 .faq h3 {
     margin-top: 40px;
-}
+} 
 
 
 
@@ -311,17 +311,17 @@ button:hover, .button:hover{
    footer
    ========================================================================== */
 footer {
-    background-color: #3d3c3c;
-    bottom: 0;
     color: #e7e7e7;
-    font-size: 13px;
-    position: absolute;
+    background-color: #3D3C3C;
     text-align: center;
+    font-size: 13px;
+    position: fixed;
+    bottom: 0px;
     width: 100%;
 }
 
 footer .inner {
-    padding: 30px 0;
+    padding: 0;
 }
 
 
@@ -448,14 +448,14 @@ Modify as content requires.
 ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+/* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
 (-o-min-device-pixel-ratio: 5/4),
 (-webkit-min-device-pixel-ratio: 1.25),
 (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+/* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
@@ -464,68 +464,68 @@ Inlined to avoid required HTTP connection: h5bp.com/r
 ========================================================================== */
 
 @media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+* {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+a,
+a:visited {
+    text-decoration: underline;
+}
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+a[href]:after {
+    content: " (" attr(href) ")";
+}
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+abbr[title]:after {
+    content: " (" attr(title) ")";
+}
 
-    /*
-    * Don't show links for images, or javascript/internal links
-    */
+/*
+* Don't show links for images, or javascript/internal links
+*/
 
-    .ir a:after,
+.ir a:after,
     a[href^="javascript:"]:after,
     a[href^="#"]:after {
-        content: "";
-    }
+    content: "";
+}
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+pre,
+blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+}
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+thead {
+    display: table-header-group; /* h5bp.com/t */
+}
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+tr,
+img {
+    page-break-inside: avoid;
+}
 
-    img {
-        max-width: 100% !important;
-    }
+img {
+    max-width: 100% !important;
+}
 
-    @page {
-        margin: 0.5cm;
-    }
+@page {
+    margin: 0.5cm;
+}
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+p,
+h2,
+h3 {
+    orphans: 3;
+    widows: 3;
+}
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+h2,
+h3 {
+    page-break-after: avoid;
+}
 }

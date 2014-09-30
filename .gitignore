@@ -1,0 +1,4 @@
+app/files/[^.]*
+mysql-credentials.php
+delete_old_files_uploader.sh
+logs.idea

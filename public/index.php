@@ -1,3 +1,7 @@
+<?php
+    opcache_reset();
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -5,30 +9,32 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>DOCX Converter</title>
-    <meta name="description" content="Resumable PHP and JS uploader">
-    <meta name="keywords" content="file upload, resumable, uploader, modern file upload">
+    <title>HTML5|Uploader</title>
+    <meta name="description" content="Resumable uploads with only Javascript and PHP. HTML5|Uploader.">
+    <meta name="keywords" content="file upload, resumable, uploader, modern file upload, HMTL5">
     <meta property="og:description" content="Resumable upload script with MySQL backend.">
     <link rel="stylesheet" href="/css/normalize.css">
-    <link rel="stylesheet" href="/css/converter.css">
-    <link href='http://fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="/css/default.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href='//fonts.googleapis.com/css?family=Lato:300,400,900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/themes/defaultTheme.css">
 </head>
 <body>
 <header>
     <div class="inner clearfix">
+
+
         <!-- Begin Menu -->
         <nav id="menu" class="menu">
             <ul id="tiny">
                 <li class="active"><a href="//www.filson.com">Home</a></li>
-                <li><a href="//github.com/ehime/DOCX-Converter">View</a></li>
+                <li><a href="//github.com/ehime/DOCX-Uploader">View</a></li>
             </ul>
         </nav>
         <!-- End Menu -->
     </div>
 </header>
 
-<form id="fileupload" class="DOCXConverter" method="POST" action="/converter" enctype="multipart/form-data">
+<form id="fileupload" class="uploader" method="POST" action="handler.php" enctype="multipart/form-data">
     <div class="drop-wrapper">
         <div id="dropzone" class="dropzone">
             <h1>Drop Zone</h1>
@@ -36,10 +42,10 @@
                 Drop your files here. This is only a demo, your files will be deleted after an hour.<br>
                 Max allowed file size is 20MB.
             </p>
-                <span id="browsebutton" class="fileinput-button button gray" href="">
-                    Browse..
-                    <input type="file" id="fileinput" name="files[]" class="fileinput" multiple />
-                </span>
+                    <span id="browsebutton" class="fileinput-button button gray" href="">
+                        Browse..
+                        <input type="file" id="fileinput" name="files[]" class="fileinput" multiple />
+                    </span>
         </div>
     </div>
 
@@ -75,7 +81,7 @@
 
 <footer>
     <div class="inner">
-        <p>By <a href="//www.linkedin.com/in/ehimeprefecture/" target="_blank">Jd Daniel</a></p>
+        <p>Created by <a href="//www.linkedin.com/ehimeprefecture" target="_blank">Jd Daniel</a></p>
     </div>
 </footer>
 
@@ -126,14 +132,14 @@
 <!-- handlebars -->
 <script src="/js/handlebars.min.js"></script>
 
-<!-- DOCXConverter -->
+<!-- uploader -->
 <script src="/js/jquery.ui.widget.js"></script>
 <script src="/js/vendor/bootstrap-transition.js"></script>
 <script src="/js/jquery.iframe-transport.js"></script>
 <script src="/js/jquery.fileupload.js"></script>
 <script src="/js/jquery.fileupload-process.js"></script>
 <script src="/js/jquery.fileupload-validate.js"></script>
-<script src="/js/DOCXConverter.js"></script>
+<script src="/js/uploader.js"></script>
 <script src="/js/main.js"></script>
 
 </body>

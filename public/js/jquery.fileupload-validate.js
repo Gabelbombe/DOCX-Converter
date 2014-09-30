@@ -51,16 +51,16 @@
 
         options: {
             /*
-            // The regular expression for allowed file types, matches
-            // against either file type or file name:
-            acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-            // The maximum allowed file size in bytes:
-            maxFileSize: 10000000, // 10 MB
-            // The minimum allowed file size in bytes:
-            minFileSize: undefined, // No minimal file size
-            // The limit of files to be uploaded:
-            maxNumberOfFiles: 10,
-            */
+             // The regular expression for allowed file types, matches
+             // against either file type or file name:
+             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+             // The maximum allowed file size in bytes:
+             maxFileSize: 10000000, // 10 MB
+             // The minimum allowed file size in bytes:
+             minFileSize: undefined, // No minimal file size
+             // The limit of files to be uploaded:
+             maxNumberOfFiles: 10,
+             */
 
             // Function returning the current number of files,
             // has to be overriden for maxNumberOfFiles validation:
@@ -86,22 +86,22 @@
                     settings = this.options,
                     file = data.files[data.index],
                     numberOfFiles = settings.getNumberOfFiles();
-                
-                
+
+
                 if (numberOfFiles && $.type(options.maxNumberOfFiles) === 'number' &&
-                        numberOfFiles + data.files.length > options.maxNumberOfFiles) {
+                    numberOfFiles + data.files.length > options.maxNumberOfFiles) {
                     file.error = settings.i18n('maxNumberOfFiles');
                 } else if (options.acceptFileTypes &&
-                        !(options.acceptFileTypes.test(file.type) ||
-                        options.acceptFileTypes.test(file.name))) {
+                    !(options.acceptFileTypes.test(file.type) ||
+                    options.acceptFileTypes.test(file.name))) {
                     file.error = settings.i18n('acceptFileTypes');
                 } else if (options.maxFileSize && file.size > options.maxFileSize) {
                     file.error = settings.i18n('maxFileSize');
                 } else if ($.type(file.size) === 'number' &&
-                        file.size < options.minFileSize) {
+                    file.size < options.minFileSize) {
                     file.error = settings.i18n('minFileSize');
                 } else if (this._fileAlreadyAdded(file)) {
-                    //@ehime HTML5Upload
+                    //@ehime Uploader
                     file.error = settings.i18n('alreadyAdded');
                 } else {
                     delete file.error;
@@ -119,7 +119,7 @@
 
         _fileAlreadyAdded: function(file) {
             var names = $("#fileupload .filename"),
-                exists = false; 
+                exists = false;
 
             names.each(function () {
                 if ($(this).html() == file.name) {
@@ -129,7 +129,7 @@
                     return false;
                 }
             });
-            return exists; 
+            return exists;
         }
 
     });
