@@ -18,7 +18,10 @@ Class UploadHandlerMYSQL Extends UploadHandler
 
         try {
             $this->pdo = new PDO($dsn, $user, $pass);
-        } catch (PDOException $e) {
+        }
+
+        catch (PDOException $e)
+        {
             echo 'Connection failed: ' . $e->getMessage();
         }
 
@@ -26,11 +29,13 @@ Class UploadHandlerMYSQL Extends UploadHandler
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    protected function getUserId() {
+    protected function getUserId()
+    {
         //let's use a simple method to save the user's files to different directories (based on cookies), 
         //so we only see our own uploads. This is only for the sake of the demo, you will want to use 
         //a more sophisticated method in a real environment. (User authentication, etc..)
-        if (!isset($_COOKIE['UploaderUserId'])) {
+        if (! isset($_COOKIE['UploaderUserId']))
+        {
             $id = uniqid();
             setcookie('UploaderUserId', $id, time() + $this->options['userdir_time_to_live'], '/');
             $_COOKIE['UploaderUserId'] = $id; //cookies always only accessible after the next pageload, this is the workaround (because this is an ajax request)
@@ -44,54 +49,60 @@ Class UploadHandlerMYSQL Extends UploadHandler
         // return session_id();
     }
 
-    protected function fileSaveDB($name, $size, $uploaded_bytes) {
-        $user_id = $this->getUserId();
+    protected function fileSaveDB($name, $size, $uploadedBytes)
+    {
+        $userId = $this->getUserId();
 
-       $uploaded_time = time();
+        $uploadedTIme = time();
 
         $stmt = $this->pdo->prepare('SELECT file_name FROM files WHERE file_name = :file_name AND user_id = :user_id');
         $stmt->execute(array(
             ':file_name' => $name,
-            ':user_id' => $user_id
+            ':user_id' => $userId
         ));
 
-        if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0)
+        {
             //its a partial upload, we need to update the record
-            $uploaded_time = time();
+            $uploadedTIme = time();
             $stmt = $this->pdo->prepare('UPDATE files SET files.uploaded_bytes = :uploaded_bytes, files.uploaded_time = :uploaded_time WHERE file_name = :file_name AND user_id = :user_id');
             $stmt->execute(array(
-                ':uploaded_bytes' => $uploaded_bytes,
-                ':uploaded_time' => $uploaded_time,
+                ':uploaded_bytes' => $uploadedBytes,
+                ':uploaded_time' => $uploadedTIme,
                 ':file_name' => $name,
-                ':user_id' => $user_id
+                ':user_id' => $userId
             ));
         } 
-        else {
+
+        else
+        {
             $stmt = $this->pdo->prepare('INSERT INTO files (file_name, file_size, uploaded_bytes, user_id, uploaded_time) 
                                          VALUES (:name, :size, :uploaded_bytes, :user_id, :uploaded_time)');
             $stmt->execute(array(
                 ':name' => $name,
                 ':size' => $size,
-                ':uploaded_bytes' => $uploaded_bytes,
-                ':user_id' => $user_id,
-                ':uploaded_time' => $uploaded_time
+                ':uploaded_bytes' => $uploadedBytes,
+                ':user_id' => $userId,
+                ':uploaded_time' => $uploadedTIme
             ));
         }
     }
 
-    protected function getFileName($name, $type, $index, $content_range) {
-        return $this->trim_file_name($name, $type, $index, $content_range);
+    protected function getFileName($name, $type, $index, $contentRange)
+    {
+        return $this->trim_file_name($name, $type, $index, $contentRange);
     }
 
-    protected function getFileObjectDB($file_name) {
-        $userid = $this->getUserId();
+    protected function getFileObjectDB($fileName)
+    {
+        $userId = $this->getUserId();
 
         $stmt = $this->pdo->prepare('SELECT * FROM files WHERE file_name = :file_name AND user_id = :user_id');
-        $stmt->execute(array(
-            ':file_name' => $file_name,
-            ':user_id' => $userid
-        ));
-        if ($stmt->rowCount() > 0 && $this->isValidFileObject($file_name)) {
+        $stmt->execute([
+            ':file_name' => $fileName,
+            ':user_id'   => $userId
+        ]);
+        if ($stmt->rowCount() > 0 && $this->isValidFileObject($fileName)) {
             $row = $stmt->fetch();
             
             $file = new stdClass();
@@ -121,10 +132,10 @@ Class UploadHandlerMYSQL Extends UploadHandler
         if ($printResponse && isset($_GET['download'])) {
             return $this->download();
         }
-        $file_name = $this->getFileNameParam();
-        if ($file_name) {
+        $fileName = $this->getFileNameParam();
+        if ($fileName) {
             $response = array(
-                substr($this->options['param_name'], 0, -1) => $this->getFileObjectDB($file_name)
+                substr($this->options['param_name'], 0, -1) => $this->getFileObjectDB($fileName)
             );
         } else {
             $response = array(
@@ -135,35 +146,38 @@ Class UploadHandlerMYSQL Extends UploadHandler
     }
 
     protected function isFileFinishedDB($file) {
-        $user_id = $this->getUserId();
+        $userId = $this->getUserId();
 
         $stmt = $this->pdo->prepare('SELECT * FROM files WHERE file_name = :file_name AND user_id = :user_id');
         $stmt->execute(array(
             ':file_name' => $file->name,
-            ':user_id' => $user_id
+            ':user_id' => $userId
         ));
 
-        if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0)
+        {
             $row = $stmt->fetch();
-
-            if ($row['uploaded_bytes'] == $row['file_size']) {
+            if ($row['uploaded_bytes'] == $row['file_size'])
+            {
                 return true;
             }
         }
         return false;
     }
 
-    protected function isFileExistInDB($file) {
+    protected function isFileExistInDB($file)
+    {
         $answer = [];
-        $user_id = $this->getUserId();
+        $userId = $this->getUserId();
 
         $stmt = $this->pdo->prepare('SELECT * FROM files WHERE file_name = :file_name AND user_id = :user_id');
         $stmt->execute(array(
                 ':file_name' => $file->name,
-                ':user_id' => $user_id
+                ':user_id' => $userId
         ));
 
-        if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0)
+        {
                 $row = $stmt->fetch();
                 $answer[0] = $row['uploaded_bytes'];
                 $answer[1] = $row['file_size'];
@@ -171,70 +185,82 @@ Class UploadHandlerMYSQL Extends UploadHandler
         return $answer;
     }
 
-    protected function handleFileUpload($uploaded_file, $name, $size, $type, $error, $index = null, $content_range = null)
+    protected function handleFileUpload($uploadedFile, $name, $size, $type, $error, $index = null, $contentRange = null)
     {
         $file = New stdClass();
-        $file->name = $this->getFileName($name, $type, $index, $content_range);
+        $file->name = $this->getFileName($name, $type, $index, $contentRange);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
 
-        if ($this->isFileFinishedDB($file)) {
+        if ($this->isFileFinishedDB($file))
+        {
             //if we already finished the file upload
             $this->setFileDeleteProperties($file);
             $file->url = $this->getDownloadURL($file->name);
-            return $file;
+
+                return $file;
         }
 
         $check_file_exist = $this->isFileExistInDB($file);
-        if (is_array($check_file_exist) && (count($check_file_exist) > 0)) {
-            if ($content_range[1] < $check_file_exist[0]) {
+
+        if (is_array($check_file_exist) && (count($check_file_exist) > 0))
+        {
+            if ($contentRange[1] < $check_file_exist[0])
+            {
                 $file->size = $check_file_exist[0];
-                return $file;
+
+                    return $file;
             }
         }
 
-        if ($this->validate($uploaded_file, $file, $error, $index)) {
+        if ($this->validate($uploadedFile, $file, $error, $index))
+        {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->getUploadPath();
-            if (!is_dir($upload_dir)) {
-                mkdir($upload_dir, $this->options['mkdir_mode'], true);
-            }
+
+                if (! is_dir($upload_dir))
+                {
+                    mkdir($upload_dir, $this->options['mkdir_mode'], true);
+                }
+
             $file_path = $this->getUploadPath($file->name);
-            $append_file = $content_range && is_file($file_path) &&
-                $file->size > $this->getFileSize($file_path);
-            if ($uploaded_file && is_uploaded_file($uploaded_file)) {
+            $appendFile = $contentRange && is_file($file_path) &&
+            $file->size > $this->getFileSize($file_path);
+
+            if ($uploadedFile && is_uploaded_file($uploadedFile))
+            {
                 // multipart/formdata uploads (POST method uploads)
-                if ($append_file) {
+                if ($appendFile) {
                     file_put_contents(
                         $file_path,
-                        fopen($uploaded_file, 'r'),
+                        fopen($uploadedFile, 'r'),
                         FILE_APPEND
                     );
                 } else {
-                    move_uploaded_file($uploaded_file, $file_path);
+                    move_uploaded_file($uploadedFile, $file_path);
                 }
             } else {
                 // Non-multipart uploads (PUT method support)
                 file_put_contents(
                     $file_path,
                     fopen('php://input', 'r'),
-                    $append_file ? FILE_APPEND : 0
+                    $appendFile ? FILE_APPEND : 0
                 );
             }
-            $file_size = $this->getFileSize($file_path, $append_file);
+            $file_size = $this->getFileSize($file_path, $appendFile);
             if ($file_size === $file->size) {
                 $this->fileSaveDB($file->name, $file->size, $file_size);
                 $file->url = $this->getDownloadURL($file->name);
                 if($this->options['handleImages']) {
                     list($img_width, $img_height) = @getimagesize($file_path);
                     if (is_int($img_width)) {
-                        $this->handle_image_file($file_path, $file);
+                        $this->handleImageFile($file_path, $file);
                     }
                 }   
             } else {
                 $this->fileSaveDB($file->name, $file->size, $file_size);
                 $file->size = $file_size;
-                if (!$content_range && $this->options['discard_aborted_uploads']) {
+                if (!$contentRange && $this->options['discard_aborted_uploads']) {
                     unlink($file_path);
                     $file->error = 'abort';
                 }

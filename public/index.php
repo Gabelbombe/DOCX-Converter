@@ -1,5 +1,12 @@
 <?php
     opcache_reset();
+
+/**
+ * REF: http://www.jackreichert.com/2012/11/09/how-to-convert-docx-to-html/
+ * REF: http://stackoverflow.com/questions/5540886/extract-text-from-doc-and-docx
+ */
+
+
 ?>
 
 <!DOCTYPE html>
@@ -89,12 +96,12 @@
     {{#each files}}
     <li class="file-item">
         <div class="first">
-                    <span class="top">
-                        <span class="filename">{{shortenName name}}</span>
-                        <a href="#" class="download-link" target="_blank">
-                            <i class="icon-download"></i>
-                        </a>
-                    </span>
+            <span class="top">
+                <span class="filename">{{shortenName name}}</span>
+                <a href="#" class="download-link" target="_blank">
+                    <i class="icon-download"></i>
+                </a>
+            </span>
             <span class="cancel-single"><i class="icon-cancel"></i></span>
             <span class="pause"><i class="icon-pause"></i></span>
             {{#if error}}
